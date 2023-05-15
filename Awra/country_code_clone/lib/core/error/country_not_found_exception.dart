@@ -1,9 +1,7 @@
+class ServerException implements Exception {}
 
-class CountryNotFoundException implements Exception {
-  final String message;
+class CacheException implements Exception {}
 
-  CountryNotFoundException({this.message = 'Country not found'});
+class NoInternetException implements Exception {}
 
-  @override
-  String toString() => 'CountryNotFoundException: $message';
-}
+class CountryNotFoundException implements Exception {}

@@ -1,6 +1,9 @@
 
+import 'package:dartz/dartz.dart';
+
+import '../../../../core/error/failurs.dart';
 import '../entities/country_code.dart';
 
 abstract class CountryRepository {
-  Future<CountryCode> getCountryCode(String countryName);
+  Future<Either<Failure, CountryCode>> getCountryCode(String countryName);
 }

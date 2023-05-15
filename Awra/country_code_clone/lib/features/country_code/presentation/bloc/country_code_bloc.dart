@@ -1,34 +1,42 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import '../../../../core/error/failurs.dart';
 import '../../domain/usecases/get_country_code_usecase.dart';
+// ignore: unused_import
 import '../../../../core/error/country_not_found_exception.dart';
 
 import 'country_code_event.dart';
 import 'country_code_state.dart';
 
-part 'country_event.dart';
-part 'country_state.dart';
-
-class CountryBloc extends Bloc<CountryEvent, CountryState> {
+class CountryCodeBloc extends Bloc<CountryCodeEvent, CountryCodeState> {
   final GetCountryCode getCountryCode;
 
-  CountryBloc({required this.getCountryCode}) : super(CountryInitial());
+  CountryCodeBloc({required this.getCountryCode}) : super(CountryCodeInitial());
 
-  Stream<CountryState> mapEventToState(
-    CountryEvent event,
+  // ignore: override_on_non_overriding_member
+  Stream<CountryCodeState> mapEventToState(
+    CountryCodeEvent event,
   ) async* {
     if (event is GetCountryCodeEvent) {
-      yield CountryLoading();
+      yield CountryCodeLoading();
 
-      try {
-        final country = await getCountryCode(event.countryName);
-        yield CountryLoaded(country: country);
-      } on CountryNotFoundException {
-        yield CountryError(errorMessage: 'Country not found');
-      } catch (e) {
-        yield CountryError(errorMessage: e.toString());
-      }
+      final failureOrCountryCode = await getCountryCode(event.countryName);
+
+      yield failureOrCountryCode.fold(
+        (failure) => CountryCodeError(message: _mapFailureToMessage(failure)),
+        (countryCode) => CountryCodeLoaded(countryCode: countryCode),
+      );
+    }
+  }
+
+  String _mapFailureToMessage(Failure failure) {
+    if (failure is ServerFailure) {
+      return 'Server Failure';
+    } else if (failure is NoInternetFailure) {
+      return 'No Internet Connection';
+    } else {
+      return 'Unexpected Error';
     }
   }
 }

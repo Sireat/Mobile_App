@@ -1,23 +1,34 @@
 //part of 'country_bloc.dart';
-
+import 'package:equatable/equatable.dart';
 import 'package:country_code_clone/features/country_code/domain/entities/country_code.dart';
+// ignore: unused_import
 import 'package:flutter/cupertino.dart';
 
-@immutable
-abstract class CountryState {}
+abstract class CountryCodeState extends Equatable {
+  const CountryCodeState();
 
-class CountryInitial extends CountryState {}
-
-class CountryLoading extends CountryState {}
-
-class CountryLoaded extends CountryState {
-  final CountryCode country;
-
-  CountryLoaded({required this.country});
+  @override
+  List<Object> get props => [];
 }
 
-class CountryError extends CountryState {
-  final String errorMessage;
+class CountryCodeInitial extends CountryCodeState {}
 
-  CountryError({required this.errorMessage});
+class CountryCodeLoading extends CountryCodeState {}
+
+class CountryCodeLoaded extends CountryCodeState {
+  final CountryCode countryCode;
+
+  const CountryCodeLoaded({required this.countryCode});
+
+  @override
+  List<Object> get props => [countryCode];
+}
+
+class CountryCodeError extends CountryCodeState {
+  final String message;
+
+  const CountryCodeError({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }

@@ -1,23 +1,31 @@
+import 'package:country_code_clone/core/network/network_info.dart';
+import 'package:dartz/dartz.dart';
 
-import 'package:country_code_clone/features/country_code/domain/entities/country_code.dart';
+import '../../../../core/error/failurs.dart';
+import '../../domain/entities/country_code.dart';
+import '../../domain/repositories/country_repository.dart';
+import '../datasourse/country_remote_data_source.dart';
 
-class CountryModel {
-  final String name;
-  final String alpha2Code;
+class CountryRepositoryImpl implements CountryRepository {
+  final CountryRemoteDataSource remoteDataSource;
+  final NetworkInfo networkInfo;
 
-  CountryModel({
-    required this.name,
-    required this.alpha2Code,
+  CountryRepositoryImpl({
+    required this.remoteDataSource,
+    required this.networkInfo,
   });
 
-  factory CountryModel.fromJson(Map<String, dynamic> json) {
-    return CountryModel(
-      name: json['name'],
-      alpha2Code: json['alpha2Code'],
-    );
-  }
-
-  CountryCode toEntity() {
-    return CountryCode(name: name, code: alpha2Code);
+  @override
+  Future<Either<Failure, CountryCode>> getCountryCode(String countryName) async {
+    if (await networkInfo.isConnected()) {
+      try {
+        final countryCode = await remoteDataSource.getCountryCode(countryName);
+        return Right(countryCode);
+      } catch (e) {
+        return Left(ServerFailure());
+      }
+    } else {
+      return Left(NoInternetFailure());
+    }
   }
 }

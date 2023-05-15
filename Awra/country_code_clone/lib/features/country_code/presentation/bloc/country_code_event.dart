@@ -1,12 +1,18 @@
-//part of 'country_bloc.dart';
+import 'package:equatable/equatable.dart';
+//part of 'country_code_bloc.dart';
 
-import 'package:flutter/cupertino.dart';
+abstract class CountryCodeEvent extends Equatable {
+  const CountryCodeEvent();
 
-@immutable
-abstract class CountryEvent {}
+  @override
+  List<Object> get props => [];
+}
 
-class GetCountryCodeEvent extends CountryEvent {
+class GetCountryCodeEvent extends CountryCodeEvent {
   final String countryName;
 
-  GetCountryCodeEvent({required this.countryName});
+  const GetCountryCodeEvent(this.countryName);
+
+  @override
+  List<Object> get props => [countryName];
 }
