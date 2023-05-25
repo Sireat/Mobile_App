@@ -3,11 +3,12 @@ description: A new Flutter project.
 publish_to: 'none'
 version: 1.0.0+1
 environment:
-  sdk: "3.0.1"
+  sdk: ">=2.15.0 <3.0.0"
 dependencies:
   bloc: ^8.1.1
+  connectivity_plus: ^2.3.0
   dartz: ^0.10.1
-  equatable: ^2.0.5
+   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
