@@ -1,0 +1,37 @@
+name: country_code_clone
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  import 'package:data_connection_checker/data_connection_checker.dart';
+
+abstract class NetworkInfo {
+  Future<bool> get isConnected;
+}
+
+class NetworkInfoImpl implements NetworkInfo {
+  final DataConnectionChecker connectionChecker;
+
+  NetworkInfoImpl(this.connectionChecker);
+
+  @override
+  Future<bool> get isConnected => connectionChecker.hasConnection;
+}
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^2.0.14
+  bloc: ^8.1.1
+  equatable: ^2.0.5
+  http: ^0.13.6
+  get_it: ^7.6.0
+  flutter_bloc: ^8.1.2
+  connectivity_plus: ^2.3.0
+  dartz: ^0.10.1
+  shared_preferences: ^2.1.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter: 
+  uses-material-design: true

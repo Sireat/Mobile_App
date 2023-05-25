@@ -1,0 +1,12 @@
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/country_code_clone
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/icudtl.dat
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.smcbin
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/version.json
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/home/sireat/ForGithub/Mobile_App/Awra/country_code_clone/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES
