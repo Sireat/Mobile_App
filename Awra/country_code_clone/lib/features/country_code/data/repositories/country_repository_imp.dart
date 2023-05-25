@@ -20,7 +20,7 @@ class CountryRepositoryImpl implements CountryRepository {
     if (await networkInfo.isConnected()) {
       try {
         final countryCode = await remoteDataSource.getCountryCode(countryName);
-        return Right(countryCode);
+        return Right(countryCode as CountryCode);
       } catch (e) {
         return Left(ServerFailure());
       }

@@ -16,9 +16,9 @@ class CountryModel {
     );
   }
 
-  CountryCode toEntity() {
-    return CountryCode(name: name, code: alpha2Code);
-  }
+   CountryCode toEntity() {
+     return CountryCode(name: name, code: alpha2Code);
+   }
 
   Map<String, dynamic> toJson() {
     return {
